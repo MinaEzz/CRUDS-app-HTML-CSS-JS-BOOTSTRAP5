@@ -1,0 +1,187 @@
+/* global style */
+*{
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+    scroll-behavior: smooth;
+}
+body{
+    font-family: 'Montserrat', sans-serif;
+}
+.row{
+    width: 100%;
+    margin: 0;
+}
+
+#header, #inputs, #search-delete, #outputs{
+    width: 100%;
+}
+/* variables */
+:root{
+    --maincolor: #0067fe;
+    --secondarycolor: #004bbb;
+    --redcolor: #dc3545;
+    --greencolor: #20c997;
+}
+main{
+    width: 100%;
+    min-height: 100vh;
+    padding: 20px 0;
+}
+h1,p{
+    margin: 0;
+}
+/* start header */
+header{
+    text-align: center;
+    text-transform: uppercase;
+    padding: 16px 0;
+}
+header h1{
+    font-size: 40px;
+}
+header p{
+    font-size: 32px;
+}
+/* end header */
+
+/* start input part */
+input{
+    margin: 8px 0;
+    font-size: 16px;
+    transition: all .3s ease-in-out !important;
+    -webkit-transition: all .3s ease-in-out !important;
+    -moz-transition: all .3s ease-in-out !important;
+    -ms-transition: all .3s ease-in-out !important;
+    -o-transition: all .3s ease-in-out !important;
+}
+input:focus{
+    box-shadow: 1px 1px 4px 1px var(--maincolor),-1px -1px 4px 1px var(--maincolor) !important;
+    transform: scale(1.1);
+    -webkit-transform: scale(1.1);
+    -moz-transform: scale(1.1);
+    -ms-transform: scale(1.1);
+    -o-transform: scale(1.1);
+}
+input::placeholder{
+    text-transform: capitalize;
+    font-size: 16px;
+}
+#inputs .cost-part, .price-part{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+.total-cost, .total-price{
+    font-size: 16px;
+    text-transform: capitalize;
+    text-align: center;
+    font-weight: 400;
+    margin-bottom: 8px;
+    padding: 4px;
+    color: #fff;
+    background-color: #808080;
+    border-radius: .375rem 0 .490rem 0 ;
+    -webkit-border-radius: .375rem 0 .490rem 0 ;
+    -moz-border-radius: .375rem 0 .490rem 0 ;
+    -ms-border-radius: .375rem 0 .490rem 0 ;
+    -o-border-radius: .375rem 0 .490rem 0 ;
+    opacity: 80%;
+    transition: all .3s ease;
+    -webkit-transition: all .3s ease;
+    -moz-transition: all .3s ease;
+    -ms-transition: all .3s ease;
+    -o-transition: all .3s ease;
+}
+.total-cost::before{
+    content: "total cost: ";
+}
+.total-price::before{
+    content: "total price: ";
+}
+/* end input part */
+
+/* start search and delete part */
+button#add-btn, button#title-search-btn, button#category-search-btn, button#delete-all-btn,button#update-btn,  button#delete-btn{
+    width: 100%;
+    margin: 4px 0;
+    color: #fff;
+    text-transform: capitalize;
+    font-size: 18px;
+    font-weight: 400;
+    background-color: var(--maincolor);
+    transition: all .2s ease-in-out !important;
+    -webkit-transition: all .2s ease-in-out !important;
+    -moz-transition: all .2s ease-in-out !important;
+    -ms-transition: all .2s ease-in-out !important;
+    -o-transition: all .2s ease-in-out !important;
+}
+button#add-btn:hover, button#title-search-btn:hover, button#category-search-btn:hover, button#delete-all-btn:hover{
+    background-color: var(--secondarycolor) !important;
+    letter-spacing: 2px;
+}
+.search-btns{
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+/* outputs part */
+#outputs{
+    width: 100%;
+    margin: 10px 0;
+}
+#outputs .container{
+    overflow-x: scroll;
+}
+#outputs .container::-webkit-scrollbar{
+    display: none;
+}
+#outputs table{
+    text-align: center;
+    margin: 0;
+    color: #000;
+}
+table th{
+    font-size: 14px;
+    text-transform: uppercase;
+}
+table tr{
+    font-size: 15px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+/* update and delete buttons */
+button#update-btn,  button#delete-btn{
+    margin: 0;
+    font-size: 15px;
+}
+button#update-btn{
+    background-color: var(--greencolor);
+}
+button#delete-btn{
+    background-color: var(--redcolor);
+}
+button#update-btn:hover, button#delete-btn:hover{
+    animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+    transform: translate3d(0, 0, 0);
+    perspective: 1000px;
+    -webkit-animation: shake 0.82s cubic-bezier(.36,.07,.19,.97) both;
+}
+@keyframes shake {
+    10%, 90% {
+      transform: translate3d(-1px, 0, 0);
+    }
+    20%, 80% {
+      transform: translate3d(2px, 0, 0);
+    }
+    
+    30%, 50%, 70% {
+      transform: translate3d(-2px, 0, 0);
+    }
+    40%, 60% {
+      transform: translate3d(2px, 0, 0);
+  }}
+/* end outputs */
