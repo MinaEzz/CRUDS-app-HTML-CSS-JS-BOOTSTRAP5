@@ -70,47 +70,38 @@ addBtn.addEventListener("click", function () {
     totalPrice: totalPrice.innerHTML,
   };
 
+  if (titleInput.value == "") product.title = "undefined";
+  if (categoryInput.value == "") product.category = "undefined";
+  if (costInput.value == "") product.cost = 0;
+  if (taxInput.value == "") product.taxes = 0;
+  if (adsInput.value == "") product.ads = 0;
+  if (otherInput.value == "") product.others = 0;
+  if (!totalCost.innerHTML) product.totalCost = 0;
+  if (priceInput.value == "") product.price = 0;
+  if (discountInput.value == "") product.discount = 0;
+  if (!totalPrice.innerHTML) product.totalPrice = 0;
+
   if (!isUpdated) {
     // count loop:
     if (product.count > 0 && product.count <= 100) {
-      if (
-        product.title == "" &&
-        product.category == "" &&
-        product.cost == "" &&
-        product.taxes == "" &&
-        product.ads == "" &&
-        product.others == "" &&
-        product.totalCost == "" &&
-        product.price == "" &&
-        product.totalPrice == ""
-      ) {
-        product.title = "undefined";
-        product.category = "undefined";
-        product.cost = 0;
-        product.taxes = 0;
-        product.ads = 0;
-        product.others = 0;
-        product.totalCost = 0;
-        product.price = 0;
-        product.discount = 0;
-        product.totalPrice = 0;
-        for (let i = 0; i < product.count; i++) {
-          data.push(product);
-        }
+      for (let i = 0; i < product.count; i++) {
+        data.push(product);
       }
+      // clear inputs
+      clearInputs();
     } else {
-      alert(" please enter the count between 1 & 100 ");
+      alert(`fill at least the count field from 1 to 100 only`);
     }
   } else {
     data[updateId] = product;
     isUpdated = false;
     countInput.removeAttribute("disabled");
     addBtn.innerHTML = `add product`;
+    // clear inputs
+    clearInputs();
   }
 
   localStorage.setItem("products", JSON.stringify(data));
-  // clear inputs
-  clearInputs();
   // get data
   getData();
 });
@@ -191,7 +182,7 @@ function updateItem(i) {
   discountInput.value = data[i].discount;
   getTotalPrice();
   countInput.setAttribute("disabled", "true");
-  addBtn.innerHTML = `update product '${i}'`;
+  addBtn.innerHTML = `update product '${i + 1}'`;
   isUpdated = true;
   updateId = i;
   scroll({
@@ -202,7 +193,9 @@ function updateItem(i) {
 
 // SEARCH MODE FUNCTION:
 let searchMode = "";
-
+if (!searchMode) {
+  searchInput.setAttribute("disabled", "true");
+}
 function searchModeType(id) {
   if (id === "title-search-btn") {
     searchMode = "title";
