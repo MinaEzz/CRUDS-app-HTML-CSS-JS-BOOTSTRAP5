@@ -90,7 +90,7 @@ addBtn.addEventListener("click", function () {
       // clear inputs
       clearInputs();
     } else {
-      alert(`fill at least the count field from 1 to 100 only`);
+      alert(`fill at least the count field from 1 to 100`);
     }
   } else {
     data[updateId] = product;
@@ -173,6 +173,7 @@ function deleteAll() {
 function updateItem(i) {
   titleInput.value = data[i].title;
   categoryInput.value = data[i].category;
+  countInput.value = data[i].count;
   costInput.value = data[i].cost;
   taxInput.value = data[i].taxes;
   adsInput.value = data[i].ads;
