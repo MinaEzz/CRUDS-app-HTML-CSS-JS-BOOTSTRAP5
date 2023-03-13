@@ -173,7 +173,6 @@ function deleteAll() {
 function updateItem(i) {
   titleInput.value = data[i].title;
   categoryInput.value = data[i].category;
-  countInput.value = data[i].count;
   costInput.value = data[i].cost;
   taxInput.value = data[i].taxes;
   adsInput.value = data[i].ads;
